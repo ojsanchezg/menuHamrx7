@@ -1,0 +1,130 @@
+:root { /*Establece variables para los colores a usar. Se usa con nav(--primary) para el color primario*/
+    --primary: #242d3b;
+    --white: #fff;
+    --gray: #2a324b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-weight: lighter;
+    background-color: var(--primary);
+    color: var(--white);
+    min-height: 100%;
+}
+
+.nav {
+    border-bottom: solid 1px var(--gray); /*Para poner un límite al nav cuando se abra y se cierre*/ /*Esa línea encierra todo el nav*/ 
+}
+
+.nav_toggle {
+    position: absolute; /*Para que no se mueva de donde lo hemos puesto*/
+    cursor: pointer; /*Para indicarle al usuario que ahí debe dar click*/
+    margin: 0 1rem; /*"Para que tenga espaciado"*/
+    right: 0; /*Para ubicar el objeto absoluto totalmente a la derecha*/
+}
+
+.nav_toggle svg {
+    width: 1rem; /*para darle esa dimensión a los botones del menú*/
+    fill: var(--white); /*llena todo el interior de un elemento dado*/
+}
+
+.nav_toggle .close {
+    display: none;
+}
+
+.nav_toggle .close,
+.nav_toggle .menu {
+    margin-top: 0.3em;
+}
+
+.nav_checkbox {
+    display: none;
+}
+
+.nav_menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    margin: 1rem;
+}
+
+.nav_menu li {
+    list-style-type: none;
+    display: none; /*Para no ver el resto de los elementos del menú*/
+}
+
+/*editando el logo*/
+.nav_menu li:first-child { /*para editar el 1er elemento de la lista, en este caso, el logo*/
+    margin-right: auto; /*"Para que pase hasta arriba"*/
+    display: block; /*para que siempre se vea*/
+}
+
+.nav_menu a { /*Cambia las propiedades de los enlaces del menú*/
+    text-decoration: none; /*Para eliminar el subrayado de los enlaces*/
+    color: inherit; /*Para que herede el color del elemento padre*/
+    font-size: 1.1rem;
+}
+
+.menu_logo {
+    height: 30px;
+}
+
+.menu_logo img {
+    height: 100%;
+}
+
+/*Radio and checkbox elements can be toggled by the user. Some menu items are 'checked' when the user selects them. When such elements are toggled 'on' the :checked pseudo-class applies.*/
+#nav_checkbox:checked ~ ul.nav_menu li { /*indica que cuando se hace click en el checkbox se aplica la propiedad después de la virgulilla*/
+    display: block;
+}
+
+#nav_checkbox:checked ~label.nav_toggle .close { /*Llama al ícono de cerrar menú cuando se activa el checkbox/cuando se hace click*/
+    display: block;
+}
+
+#nav_checkbox:checked ~label.nav_toggle .menu { /*Al hacer click hace que desaparezca el ícono de menú de hamburguesa*/
+    display: none;
+}
+
+/*Hasta aquí todo listo para Mobile*/
+/*Falta agregar los media queires para que la forma del menú cambie cuando estemos en desktop*/
+
+@media only screen and (min-width: 560px) {
+    .nav_toggle {
+        display: none; /*Desaparece el toggle del menú hamburguesa*/
+    }
+
+    .nav_menu {
+        flex-direction: row; /*Cambia la dirección del menú de columna a fila*/
+    }
+
+    .nav_menu li {
+        display: block; /*Hace que se muestren los enlaces del menú*/
+    }
+}
+
+/*De esta manera queda el menú en un formato responsivo*/
+
+.main {
+    background: url(https://images6.alphacoders.com/667/667554.jpg) no-repeat 40% 50% fixed; /*No se repite(background-repeat), eje X, eje Y, background-attachment*/
+    /*background-size: cover;*/
+    background-size: cover;
+    border: solid 1px yellow;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 90vh; /*Se redujo 10vh para compensar, o restar, los 10 del Footer*/
+}
+
+.footer {
+    border: solid 1px var(--gray);
+    display: block;
+    justify-content: center;
+}
